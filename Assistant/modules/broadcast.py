@@ -9,6 +9,13 @@ from Assistant.database.block_db import get_banned_users
 from Assistant.database.users_db import get_served_users
 
 
+async def logs(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    try:
+        await cast(Message, update.effective_message).reply_document(document="log.txt")
+    except Exception:
+        await cast(Message, update.effective_message).reply_text("404: ɴᴏᴛ ғᴏᴜɴᴅ ")
+
+
 async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     message = cast(Message, update.effective_message)
     bot = context.bot
@@ -21,12 +28,12 @@ async def stats(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     message = cast(Message, update.effective_message)
-    bot = context.bot
+    bot, args = context.bot, context.args
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
     else:
-        if len(message.command) < 2:
+        if not args and not message.reply_to_message:
             return await message.reply_text(
                 "<b>ᴇxᴀᴍᴘʟᴇ </b>:\n/broadcast [ᴍᴇssᴀɢᴇ] ᴏʀ [ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ]"
             )

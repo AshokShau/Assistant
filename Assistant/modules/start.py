@@ -6,7 +6,7 @@ from telegram.helpers import mention_html
 
 from Assistant.database.block_db import is_banned_user
 from Assistant.database.users_db import add_served_user
-from config import OWNER_ID
+from config import LOGGER_ID, OWNER_ID
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -31,6 +31,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         ]
     )
     await add_served_user(message.from_user.id)
+    await context.bot.send_message(
+        chat_id=LOGGER_ID,
+        text=f"<b>ɴᴇᴡ ᴜsᴇʀ :</b>\nᴜsᴇʀ: {mention_html(user.id, user.first_name)}\n<b>ᴜsᴇʀɴᴀᴍᴇ:</b> {user.username}\n<b>ɪᴅ:</b> <code>{user.id}</code>",
+    )
     await message.reply_photo(
         "https://telegra.ph/file/8600403902c26c406ad80.jpg",
         caption=f"ʜᴇʟʟᴏ {mention_html(user.id, user.first_name)}.\n\nᴀssɪsᴛᴀɴᴛ ᴏғ {mention_html(owner.id, owner.first_name)}\nғᴇᴇʟ ғʀᴇᴇ ᴛᴏ sᴇɴᴅ ᴍᴇssᴀɢᴇ ʜᴇʀᴇ, ᴅᴏɴ'ᴛ ᴅᴍ",
