@@ -1,0 +1,48 @@
+{
+  "name": "Livegram",
+  "description": "livegram",
+  "logo": "https://te.legra.ph/file/dc32c85de4f1ad9b3456b.jpg",
+  "keywords": [
+    "livegram",
+    "mongodb",
+    "python",
+    "pyrogram",
+    "assistant"
+  ],
+    "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "repository": "https://github.com/Abishnoi69/Assistant",
+  "env": {
+    "API_ID": {
+      "description": "Get this value from my.telegram.org/apps.",
+      "required": true,
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from my.telegram.org/apps.",
+      "required": true,
+      "value": ""
+    },
+    "TOKEN": {
+      "description": "A Bot token from @BotFather",
+      "required": true,
+      "value": ""
+    },
+    "MONGO_URL": {
+      "description": "Get a mongodb url from https://cloud.mongodb.com.",
+      "required": true,
+      "value": ""
+    },
+    "SUDO_USER": {
+      "description": "The user id(s) of user(s) whom you would like to add as a SUDO_USER, Multiple values shall be seperated with a space.",
+      "required": true,
+      "value": ""
+    },    
+    "LOGGER_ID": {
+      "description": "log group id must start with: -100",
+      "required": true,
+      "value": ""
+    }
+  }
+}
