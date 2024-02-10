@@ -14,6 +14,7 @@ LOGGER_ID = int(getenv("LOGGER_ID", None))
 "channel/group ID with `-` for keeping track of new errors where the bot gets..."
 SUDO_USER = list(map(int, getenv("SUDO_USER", "").split()))
 "set of user ID which can have elevated privileges"
-DEBUG = bool(getenv("DEBUG", False))
+LOGGER_LEVEL = getenv("LOGGER_LEVEL", 20)
+"logger level, `debug(10)`, `info(20)`, `warn(30)` and `error(40)`. default is `info`"
 
 TIME_ZONE = "Asia/Kolkata"
