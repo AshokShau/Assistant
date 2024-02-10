@@ -32,17 +32,15 @@ async def broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
-    else:
-        if not args and not message.reply_to_message:
-            return await message.reply_text(
-                "<b>ᴇxᴀᴍᴘʟᴇ </b>:\n/broadcast [ᴍᴇssᴀɢᴇ] ᴏʀ [ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ]"
-            )
+    elif args:
         query = message.text.split(None, 1)[1]
+    else:
+        return await message.reply_text(
+            "<b>ᴇxᴀᴍᴘʟᴇ </b>:\n/broadcast [ᴍᴇssᴀɢᴇ] ᴏʀ [ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ]"
+        )
     susr = 0
-    served_users = []
     susers = await get_served_users()
-    for user in susers:
-        served_users.append(int(user["user_id"]))
+    served_users = [int(user["user_id"]) for user in susers]
     for i in served_users:
         try:
             m = (
@@ -57,10 +55,10 @@ async def broadcast(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
             if flood_time > 200:
                 continue
             await asyncio.sleep(flood_time)
-        except:
+        except Exception:
             continue
 
     try:
         await message.reply_text(f"<b>ʙʀᴏᴀᴅᴄᴀsᴛᴇᴅ ᴍᴇssᴀɢᴇ ᴛᴏ {susr} ᴜsᴇʀs.</b>")
-    except:
+    except Exception:
         pass

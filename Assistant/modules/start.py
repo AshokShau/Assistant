@@ -20,14 +20,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         [
             [
                 InlineKeyboardButton(
-                    text="ɢɪᴛʜᴜʙ",
-                    url=f"https://github.com/Abishnoi69",
+                    text="ɢɪᴛʜᴜʙ", url="https://github.com/Abishnoi69"
                 ),
                 InlineKeyboardButton(
-                    text="ᴄʜᴀɴɴᴇʟ",
-                    url=f"https://t.me/FallenAssociation",
+                    text="ᴄʜᴀɴɴᴇʟ", url="https://t.me/FallenAssociation"
                 ),
-            ],
+            ]
         ]
     )
     await add_served_user(message.from_user.id)

@@ -52,20 +52,19 @@ async def incoming_private(update: Update, context: ContextTypes.DEFAULT_TYPE) -
                 return await message.reply_text(
                     f"ғᴀɪʟᴇᴅ ᴛᴏ sᴇɴᴅ ᴛʜᴇ ᴍᴇssᴀɢᴇ\n\nᴇʀʀᴏʀ:{e} "
                 )
+    elif await is_group():
+        await bot.forward_messages(
+            chat_id=config.LOGGER_ID,
+            from_chat_id=message.chat_id,
+            message_id=message.message_id,
+        )
     else:
-        if await is_group():
-            await bot.forward_messages(
-                chat_id=config.LOGGER_ID,
-                from_chat_id=message.chat_id,
-                message_id=message.message_id,
-            )
-        else:
-            for x in SUDO_USERS:
-                try:
-                    await bot.forward_message(
-                        chat_id=x,
-                        from_chat_id=message.chat_id,
-                        message_id=message.message_id,
-                    )
-                except Exception as e:
-                    LOGGER.warning(str(e))
+        for x in SUDO_USERS:
+            try:
+                await bot.forward_message(
+                    chat_id=x,
+                    from_chat_id=message.chat_id,
+                    message_id=message.message_id,
+                )
+            except Exception as e:
+                LOGGER.warning(str(e))

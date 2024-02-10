@@ -12,8 +12,6 @@ async def is_group() -> bool:
     if not user:
         modelist[chat_id] = False
         return False
-        modelist[chat_id] = True
-        return True
     return mode
 
 

@@ -36,51 +36,47 @@ async def mode_func(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def block_func(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     message = cast(Message, update.effective_message)
-    bot = context.bot
-    if message.reply_to_message:
-        user = message.reply_to_message.forward_from
-        try:
-            user_id = user.id
-        except Exception as e:
-            return await message.reply_text(f"ғᴀɪʟᴇᴅ ᴛᴏ ғᴇᴛᴄʜ ᴜsᴇʀ.\n\nᴇʀʀᴏʀ: {e}")
-        if await is_banned_user(user_id):
-            return await message.reply_text("ᴀʟʀᴇᴀᴅʏ ʙʟᴏᴄᴋᴇᴅ")
-        else:
-            await add_banned_user(user_id)
-            await message.reply_text("ʙᴀɴɴᴇᴅ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ")
-            try:
-                await bot.send_message(
-                    user_id, "ʏᴏᴜ'ʀᴇ ɴᴏᴡ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ʙʏ ᴀᴅᴍɪɴs."
-                )
-            except:
-                pass
-    else:
+    if not message.reply_to_message:
         return await message.reply_text(
             "ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜsᴇʀ's ғᴏʀᴡᴀʀᴅᴇᴅ ᴍᴇssᴀɢᴇ ᴛᴏ ʙʟᴏᴄᴋ ʜɪᴍ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ"
         )
+    user = message.reply_to_message.forward_from
+    try:
+        user_id = user.id
+    except Exception as e:
+        return await message.reply_text(f"ғᴀɪʟᴇᴅ ᴛᴏ ғᴇᴛᴄʜ ᴜsᴇʀ.\n\nᴇʀʀᴏʀ: {e}")
+    bot = context.bot
+    if await is_banned_user(user_id):
+        return await message.reply_text("ᴀʟʀᴇᴀᴅʏ ʙʟᴏᴄᴋᴇᴅ")
+    await add_banned_user(user_id)
+    await message.reply_text("ʙᴀɴɴᴇᴅ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ")
+    try:
+        await bot.send_message(
+            user_id, "ʏᴏᴜ'ʀᴇ ɴᴏᴡ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ʙʏ ᴀᴅᴍɪɴs."
+        )
+    except Exception:
+        pass
 
 
 async def unblock_func(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user = cast(User, update.effective_user)
     message = cast(Message, update.effective_message)
-    bot = context.bot
-    if message.reply_to_message:
-        userrr = message.reply_to_message.forward_from
-        if not userrr:
-            return await message.reply_text("ᴘʟᴢ ʀᴇᴘʟʏ ᴛᴏ ᴀ ғᴏʀᴡᴀʀᴅ ᴍᴇssᴀɢᴇ ")
-        if not await is_banned_user(userrr.id):
-            return await message.reply_text("ᴀʟʀᴇᴀᴅʏ ᴜɴʙʟᴏᴄᴋᴇᴅ")
-        else:
-            await remove_banned_user(userrr.id)
-            await message.reply_text("ᴜɴʙʟᴏᴄᴋᴇᴅ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ")
-            try:
-                await bot.send_message(
-                    userrr.id,
-                    "ʏᴏᴜ'ʀᴇ ɴᴏᴡ ᴜɴʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ ʙʏ ᴀᴅᴍɪɴs.",
-                )
-            except:
-                pass
-    else:
+    if not message.reply_to_message:
         return await message.reply_text(
             "ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜsᴇʀ's ғᴏʀᴡᴀʀᴅᴇᴅ ᴍᴇssᴀɢᴇ ᴛᴏ ᴜɴʙʟᴏᴄᴋ ʜɪᴍ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ"
         )
+    userrr = message.reply_to_message.forward_from
+    if not userrr:
+        return await message.reply_text("ᴘʟᴢ ʀᴇᴘʟʏ ᴛᴏ ᴀ ғᴏʀᴡᴀʀᴅ ᴍᴇssᴀɢᴇ ")
+    bot = context.bot
+    if not await is_banned_user(userrr.id):
+        return await message.reply_text("ᴀʟʀᴇᴀᴅʏ ᴜɴʙʟᴏᴄᴋᴇᴅ")
+    await remove_banned_user(userrr.id)
+    await message.reply_text("ᴜɴʙʟᴏᴄᴋᴇᴅ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ")
+    try:
+        await bot.send_message(
+            userrr.id,
+            "ʏᴏᴜ'ʀᴇ ɴᴏᴡ ᴜɴʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴛʜᴇ ʙᴏᴛ ʙʏ ᴀᴅᴍɪɴs.",
+        )
+    except Exception:
+        pass
