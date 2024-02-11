@@ -23,6 +23,7 @@ def main() -> None:
         .defaults(defaults)
         .read_timeout(7)
         .get_updates_read_timeout(42)
+        .concurrent_updates(True)
         .post_init(setup_)
         .build()
     )
