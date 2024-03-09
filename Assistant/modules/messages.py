@@ -14,13 +14,12 @@ async def incoming_groups(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     message = cast(Message, update.effective_message)
     if not await is_group():
         return None
-    reply = message.reply_to_message
-    if reply:
+    if reply := message.reply_to_message:
         if reply.forward_origin.type == "user":
             user = reply.forward_origin.sender_user
             if not user:
                 return None
-                
+
         try:
             return await bot.copy_message(
                 user.id,
@@ -38,8 +37,7 @@ async def incoming_private(update: Update, context: ContextTypes.DEFAULT_TYPE) -
     if await is_banned_user(message.from_user.id):
         return None
     if message.from_user.id in SUDO_USERS:
-        reply = message.reply_to_message
-        if reply:
+        if reply := message.reply_to_message:
             if reply.forward_origin.type == "user":
                 user = reply.forward_origin.sender_user
                 if not user:
