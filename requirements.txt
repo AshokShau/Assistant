@@ -1,6 +1,6 @@
 httpx ~= 0.26.0
 python-dotenv
-python-telegram-bot
+python-telegram-bot[all]
 pymongo==4.3.3
 python-dotenv
 git+https://github.com/Abishnoi69/async_mongo@master

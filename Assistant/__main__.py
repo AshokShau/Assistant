@@ -1,9 +1,9 @@
-from telegram.ext import Application
+from telegram import Update
 from telegram.ext import CommandHandler as CH
-from telegram.ext import ExtBot
 from telegram.ext import MessageHandler as MH
 from telegram.ext import filters
 
+from Assistant import aplication
 from Assistant import SUDO_USERS as SUDO
 from Assistant.modules.broadcast import broadcast, logs, stats
 from Assistant.modules.messages import incoming_groups, incoming_private
@@ -11,8 +11,7 @@ from Assistant.modules.start import start
 from Assistant.modules.sudos import block_func, mode_func, unblock_func
 
 
-async def setup_(application: Application[ExtBot]) -> None:
-
+def setup() -> None:
     application.add_handler(CH("start", start))
     application.add_handler(CH("logs", logs, filters=filters.User(SUDO)))
     application.add_handler(CH("stats", stats, filters=filters.User(SUDO)))
@@ -31,3 +30,10 @@ async def setup_(application: Application[ExtBot]) -> None:
         MH(filters.ChatType.PRIVATE & ~filters.COMMAND, incoming_private),
         group=2,
     )
+    
+    application.run_polling(drop_pending_updates=True, allowed_updates=Update.ALL_TYPES)
+    
+
+
+if __name__ == "__main__":
+    setup()
