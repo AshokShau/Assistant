@@ -3,7 +3,7 @@ from telegram.ext import CommandHandler as CH
 from telegram.ext import MessageHandler as MH
 from telegram.ext import filters
 
-from Assistant import aplication
+from Assistant import application
 from Assistant import SUDO_USERS as SUDO
 from Assistant.modules.broadcast import broadcast, logs, stats
 from Assistant.modules.messages import incoming_groups, incoming_private
