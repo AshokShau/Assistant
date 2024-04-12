@@ -5,13 +5,13 @@
   "keywords": [
     "livegram",
     "mongodb",
-    "python",
+    "go",
     "telegram",
     "assistant",
-    "ptb"
+    "gotgbot"
   ],
     "buildpacks": [{
-    "url": "heroku/python"
+    "url": "heroku/go"
   }],
   "repository": "https://github.com/Abishnoi69/Assistant",
   "env": {
@@ -20,18 +20,13 @@
       "required": true,
       "value": ""
     },
-    "MONGO_URL": {
+    "DB_URI": {
       "description": "Get a mongodb url from https://cloud.mongodb.com.",
       "required": true,
       "value": ""
     },
-    "SUDO_USER": {
-      "description": "The user id(s) of user(s) whom you would like to add as a SUDO_USER, Multiple values shall be seperated with a space.",
-      "required": true,
-      "value": ""
-    },    
-    "LOGGER_ID": {
-      "description": "log group id must start with: -100",
+    "OWNER_ID": {
+      "description": "Your telegram ID",
       "required": true,
       "value": ""
     }
