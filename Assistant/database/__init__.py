@@ -10,5 +10,5 @@ try:
     db = mongo["Assistant"]
     LOGGER.info("Connected to your Mongo Database.")
 except Exception as e:
-    LOGGER.error(f"Failed to connect to your Mongo Database.\ {e}")
+    LOGGER.error(f"Failed to connect to your Mongo Database:{e}")
     exit(1)

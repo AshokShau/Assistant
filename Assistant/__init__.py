@@ -3,7 +3,7 @@ from time import time
 
 import pytz
 from telegram import Update
-from telegram._linkpreviewoptions import LinkPreviewOptions as LPO
+from telegram import LinkPreviewOptions as LPO
 from telegram.constants import ParseMode as PM
 from telegram.ext import AIORateLimiter, ApplicationBuilder, Defaults, PicklePersistence
 
@@ -12,7 +12,7 @@ import config
 # setup logger
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
+    handlers=[logging.FileHandler("log.log"), logging.StreamHandler()],
     level=config.LOGGER_LEVEL,
 )
 logging.getLogger("apscheduler").setLevel(logging.WARNING)

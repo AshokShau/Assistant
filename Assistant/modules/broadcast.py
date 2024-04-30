@@ -11,7 +11,7 @@ from Assistant.database.users_db import get_served_users
 
 async def logs(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     try:
-        await cast(Message, update.effective_message).reply_document(document="log.txt")
+        await cast(Message, update.effective_message).reply_document(document="log.log")
     except Exception:
         await cast(Message, update.effective_message).reply_text("404: ɴᴏᴛ ғᴏᴜɴᴅ ")
 
