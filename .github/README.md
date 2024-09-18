@@ -1,77 +1,105 @@
-━━━━━━━━━━━━━━━━━━━━
-**ᴀʙɪsʜɴᴏɪ**
+# Tg Assistant 
+- A Telegram bot to chat with users. 
+- It can be used to send messages, images, and files to users and users to bot owner.
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+## Prerequisites
+- Go version 1.23 or higher
+- A Telegram bot token, which can be obtained by talking to [BotFather](https://core.telegram.org/bots#botfather)
 
+## Installation
 
-<h2 align="center">
-    ──「 ASSISTANT 」──
-</h2>
+### 1. Install Go:
+- Follow the instructions to install Go on your system: [Go Installation Guide](https://golang.org/doc/install)
 
+<details>
+<summary>Easy Way:</summary>
 
-##  ᴄᴀᴛᴄʜ ᴍᴇ ɪɴ [ᴛɢ🏃‍♀️](https://t.me/AbishnoiMF) 
-
-
-## ⚡ (ɢɪᴠᴇ sᴛᴀʀ)
-
-
-━━━━━━━━━━━━━━━━━━━━
-━━━━━━━━━━━━━━━━━━━━
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-
-
-<p align="center">
-<b>𝗗𝗘𝗣𝗟𝗢𝗬𝗠𝗘𝗡𝗧 𝗠𝗘𝗧𝗛𝗢𝗗𝗦</b>
-</p>
-
-<h3 align="center">
-    ─「 ᴅᴇᴩʟᴏʏ ᴏɴ ʜᴇʀᴏᴋᴜ 」─
-</h3>
-
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/Abishnoi69/Assistant"> <img src="https://img.shields.io/badge/Deploy%20On%20Heroku-black?style=for-the-badge&logo=heroku" width="220" height="38.45"/></a></p>
-
-
-<h3 align="center">
-    ─「 ᴠᴘs/ʟᴏᴄᴀʟʟʏ ᴅᴇᴘʟᴏʏ 」─
-</h3>
-
-```console
-$ sudo apt install tmux && tmux
-$ apt update
-$ apt-get -y install git gcc python3-dev
-$ git clone https://github.com/Abishnoi69/Assistant && cd Assistant
-$ pip3 install -U -r requirements.txt 
-$ cp sample.env .env
-$ vi .env
-  -ᴘʀᴇss ɪ ʙᴜᴛᴛᴏɴ ᴏɴ ᴋᴇʏʙᴏᴀʀᴅ ᴛᴏ sᴛᴀʀᴛ ᴇᴅɪᴛɪɴɢ
-
-  -ᴘʀᴇss Ctrl + C ᴏɴᴄᴇ ʏᴏᴜ ᴀʀᴇ ᴅᴏɴᴇ ᴡɪᴛʜ ᴇᴅɪᴛɪɴɢ ᴠᴀʀs ᴀɴᴅ ᴛʏᴘᴇ :wq ᴛᴏ sᴀᴠᴇ .ᴇɴᴠ ᴏʀ :qa ᴛᴏ ᴇxɪᴛ ᴇᴅɪᴛɪɴɢ.
-
-$ bash start
+```shell
+git clone https://github.com/udhos/update-golang dlgo && cd dlgo && sudo ./update-golang.sh && source /etc/profile.d/golang_path.sh
 ```
 
-━━━━━━━━━━━━━━━━━━━━
+Exit the terminal and open the terminal to check the installation.
+</details>
 
-<h3 align="center">
-    ─「 sᴜᴩᴩᴏʀᴛ 」─
-</h3>
+Verify the installation by running:
 
-<p align="center">
-<a href="https://telegram.me/AbishnoiMF"><img src="https://img.shields.io/badge/-Support%20Group-blue.svg?style=for-the-badge&logo=Telegram"></a>
-</p>
-<p align="center">
-<a href="https://telegram.me/Abishnoi1M"><img src="https://img.shields.io/badge/Abishnoi%20-blue.svg?style=for-the-badge&logo=Telegram"></a>
-</p>
+```shell
+go version
+```
 
-[ᴜᴘᴅᴀᴛɪɴɢ ʏᴏᴜʀ ғᴏʀᴋ ᴡɪᴛʜ ᴛʜᴇ ᴜᴘsᴛʀᴇᴀᴍ ʀᴇᴘᴏ](https://t.me/Abishnoi_bots/43)
+### 2. Clone the repository:
 
-━━━━━━━━━━━━━━━━━━━━
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-━━━━━━━━━━━━━━━━━━━━
+```shell
+git clone https://github.com/AshokShau/Assistant && cd Assistant
+```
 
- 
+### 3. Set up the environment
 
+Copy the sample environment file and edit it as needed:
+
+```shell
+cp sample.env .env
+vi .env
+```
+
+### 4. Build the project
+
+```shell
+go build 
+```
+
+### 5. Run the project
+
+```shell
+./Assistant
+```
+
+## Contributing
+
+<details>
+<summary>Contributing Guidelines</summary>
+
+Contributions are welcome! Follow these steps to contribute:
+
+1. **Fork the repository**: Click the "Fork" button at the top right of this page to create a copy of this repository in
+   your GitHub account.
+
+2. **Clone the repository**: Clone your forked repository to your local machine.
+    ```shell
+    git clone https://github.com/your-username/Assistant.git
+    cd Assistant
+    ```
+
+3. **Create a branch**: Create a new branch for your changes.
+    ```shell
+    git checkout -b feature-branch
+    ```
+
+4. **Make your changes**: Make your changes to the codebase.
+
+5. **Commit your changes**: Commit your changes with a descriptive commit message.
+    ```shell
+    git add .
+    git commit -m "Description of your changes"
+    ```
+
+6. **Push to your branch**: Push your changes to your forked repository.
+    ```shell
+    git push origin feature-branch
+    ```
+
+7. **Submit a pull request**: Go to the original repository on GitHub and create a pull request from your forked
+   repository.
+
+Please ensure your code follows the project's coding standards and includes appropriate tests.
+
+Thank you for contributing!
+</details>
+
+## License
+
+This project is licensed under the MIT License—see the [LICENSE](/LICENSE) file for details.
+
+## Contact
+[![Telegram](https://img.shields.io/badge/Telegram-Channel-blue.svg)](https://t.me/FallenProjects)
+[![Telegram](https://img.shields.io/badge/Telegram-Chat-blue.svg)](https://t.me/AshokShau)

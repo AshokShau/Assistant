@@ -13,7 +13,7 @@
     "buildpacks": [{
     "url": "heroku/go"
   }],
-  "repository": "https://github.com/Abishnoi69/Assistant",
+  "repository": "https://github.com/AshokShau/Assistant",
   "env": {
     "TOKEN": {
       "description": "A Bot token from @BotFather",

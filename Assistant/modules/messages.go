@@ -1,9 +1,8 @@
 package modules
 
 import (
-	log "github.com/sirupsen/logrus"
-
-	"github.com/Abishnoi69/Assistant/Assistant/config"
+	"fmt"
+	"github.com/AshokShau/Assistant/Assistant/config"
 	"github.com/PaulSonOfLars/gotgbot/v2"
 	"github.com/PaulSonOfLars/gotgbot/v2/ext"
 )
@@ -15,26 +14,17 @@ func PmMessage(bot *gotgbot.Bot, ctx *ext.Context) error {
 
 	if config.OwnerId == user.Id {
 		reply := msg.ReplyToMessage
-
-		if reply == msg.ReplyToMessage {
-			if msg.ReplyToMessage.ForwardOrigin != nil {
-				msgOrigen := msg.ReplyToMessage.ForwardOrigin.MergeMessageOrigin()
-				if msgOrigen.SenderUser != nil {
-					_, err := bot.CopyMessage(msgOrigen.SenderUser.Id, chat.Id, msg.MessageId, &gotgbot.CopyMessageOpts{})
-					if err != nil {
-						log.Error(err)
-						return err
-					}
+		if reply != nil && reply.ForwardOrigin != nil {
+			msgOrigen := reply.ForwardOrigin.MergeMessageOrigin()
+			if msgOrigen.SenderUser != nil {
+				if _, err := bot.CopyMessage(msgOrigen.SenderUser.Id, chat.Id, msg.MessageId, &gotgbot.CopyMessageOpts{}); err != nil {
+					return fmt.Errorf("error copying message: %v", err)
 				}
 			}
 		}
 	} else {
-
-		_, err := bot.ForwardMessage(config.OwnerId, chat.Id, msg.MessageId, &gotgbot.ForwardMessageOpts{})
-
-		if err != nil {
-			log.Error(err)
-			return err
+		if _, err := bot.ForwardMessage(config.OwnerId, chat.Id, msg.MessageId, &gotgbot.ForwardMessageOpts{}); err != nil {
+			return fmt.Errorf("error forwarding message: %v", err)
 		}
 	}
 	return ext.EndGroups

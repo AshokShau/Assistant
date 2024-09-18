@@ -1,11 +1,8 @@
-module github.com/Abishnoi69/Assistant
+module github.com/AshokShau/Assistant
 
-go 1.22.2
+go 1.23.1
 
 require (
-	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.25
+	github.com/PaulSonOfLars/gotgbot/v2 v2.0.0-rc.29
 	github.com/joho/godotenv v1.5.1
-	github.com/sirupsen/logrus v1.9.3
 )
-
-require golang.org/x/sys v0.15.0 // indirect
